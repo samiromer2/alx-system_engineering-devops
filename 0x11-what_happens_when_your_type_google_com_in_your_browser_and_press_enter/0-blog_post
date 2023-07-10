@@ -1,0 +1,91 @@
+For this topic, I will be explaining the following briefly :
+
+DNS
+TCP/IP
+Firewall
+HTTPS/SSL
+Load-balancer
+Web server
+Application server
+Database
+DNS
+
+The Domain Name System (DNS) is the hierarchical and decentralized naming system used to identify computers, services, and other resources reachable through the Internet or other Internet Protocol (IP) networks. The resource records contained in the DNS associate domain names with other forms of information. Domain names are mapped to the numerical IP addresses, and this comes as a result of the fact that humans prefer names to numbers as it is easy to grasp as compared to just numbers which the computer understands. For example, www.google.com (which is a Fully Qualified Domain NAME - FQDN) is easily remembered than 172.217.17.36.
+
+DNS is a query/response protocol. The client queries an information (for example the IP address corresponding to www.google.com) in a single Transmission Control Protocol (TCP) request. This request is followed by a single TCP reply from the DNS server with the IP address corresponding to the domain name.
+TCP/IP
+
+The Transmission Control Protocol (TCP) is a connection-oriented protocol and one of the main protocols of the Internet protocol suite. It serves as a connection between client and server which must be established before data can be sent. The server must be listening for connection requests from clients before a connection is established. Applications that do not require reliable data stream service may use the User Datagram Protocol (UDP), which provides a connectionless datagram service that prioritizes time over reliability.
+
+The Internet Protocol (IP) is the network layer communications protocol in the Internet protocol suite for relaying datagrams across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. The Internet Protocol is responsible for addressing host interfaces, encapsulating data into datagrams (including fragmentation and reassembly) and routing datagrams from a source host interface to a destination host interface across one or more IP networks. For these purposes, the Internet Protocol defines the format of packets and provides an addressing system.
+
+IP has the task of delivering packets from the source host to the destination host solely based on the IP addresses in the packet headers. For this purpose, IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information.
+FIREWALL
+
+A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
+
+The firewall maintains an access control list which dictates what packets will be looked at and what action should be applied, if any, with the default action set to silent discard. Three basic actions regarding the packet consist of a silent discard, discard with Internet Control Message Protocol or TCP reset response to the sender, and forward to the next hop. Packets may be filtered by source and destination IP addresses, protocol, source and destination ports.
+HTTPS/SSL
+
+Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network, and is widely used on the Internet. In HTTPS, the communication protocol is encrypted using Secure Sockets Layer (SSL). The protocol is therefore also referred to as HTTP over SSL.
+
+Secure Sockets Layer (SSL), is a cryptographic protocol designed to provide communications security over a computer network. The protocol is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing HTTPS remains the most publicly visible.
+LOAD - BALANCER
+
+A load balancer is a device that acts as a reverse proxy and distributes network or application traffic across a number of servers. Load balancers are used to improve the overall performance of applications by reducing the burden on servers associated with managing and maintaining application and network sessions, as well as by performing application-specific tasks.
+
+Load balancing can optimize the response time and avoid unevenly overloading some compute nodes while other compute nodes are left idle. HaProxy is a type of load-balancer.
+WEB SERVER
+
+A web server is computer software and underlying hardware that accepts requests via HTTP (the network protocol created to distribute web content) or its secure variant HTTPS. A user agent, commonly a web browser initiates communication by making a request for a web page or other resource using HTTP, and the server responds with the content of that resource or an error message. A web server can also accept and store resources sent from the user agent if configured to do so.
+
+The hardware used to run a web server can vary according to the volume of requests that it needs to handle. At the low end of the range are embedded systems, such as a router that runs a small web server as its configuration interface. A high-traffic Internet website might handle requests with hundreds of servers that run on racks of high-speed computers. Examples of Web servers are Nginx and Apache.
+APPLICATION SERVER
+
+An application server is a server that hosts applications. Application server frameworks are software frameworks for building application servers. An application server framework provides both facilities to create web applications and a server environment to run them.
+
+An application server framework contains a comprehensive service layer model. It includes a set of components accessible to the software developer through a standard API defined for the platform itself. For Web applications, these components usually run in the same environment as their web server(s), and their main job is to support the construction of dynamic pages. However, many application servers do more than generate web pages: they implement services such as clustering, fail-over, and load-balancing, so developers can focus on implementing the business logic.
+DATABASE
+
+A database is an organized collection of data stored and accessed electronically. A database management system (DBMS) is the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS software additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term "database" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database.
+
+Computer scientists may classify database management systems according to the database models that they support. First is the Relational databases became dominant in the 1980s. These model data as rows and columns in a series of tables, and the vast majority use SQL for writing and querying data. The other became popular In the 2000s - Non-relational databases, collectively referred to as NoSQL because they use different query languages.
+
+Now that we have briefly discussed these topics, we can talk about processes behind the url we type on out phones, tablets or pc.
+
+When you type https://www.google.com in you Web browser, this is referred to as a URL (Uniform Resource Locator) which can be divided into three parts with an optional fourth part.
+
+    Protocol: The application-level protocol used by the client server. In this case, https.
+    Hostname: The DNS domain name which is linked to an IP address using an A name record. In this case www.google.com
+    Port: The port number that the server is listening for incoming requests from the client. When a port is not specified as in the case above, port 8080 which is the TCP default port for HTTP will be used.
+    The fourth optional part is the path-and-file-name. When this is not defined, the default html file for the server will be displayed.
+
+Anytime you enter a URL in the address box of the browser, the browser will translate the URL into a request message according to the specified protocol and send the request message to the server.
+
+Using https://www.google.com, the browser will translate the URL into the following
+
+GET index.html HTTPS/1.1 (which is the default html file for the server)
+
+Host: www.google.com
+
+Accept: image/gif, image/jpeg, */*
+
+Accept-Language: en-us
+
+Accept-Encoding: gzip, deflate
+
+User-Agent: Mozilla/4.0 (compatibility will be displayed here)
+
+When the request gets to the load balancer, it will be passed through the firewall and when it meets the firewall requirements, it will then be passed onto the designated server by the load balancer.
+
+When the request message reaches the server, the server can take either one of the following actions:
+
+    The server interprets the request received and maps the file into a file under the server’s document directory and returns the file requested to the client.
+    The server interprets the request received and maps the request into a program kept in the server, executes the program and returns the output of the program to the client.
+    The request cannot be satisfied, the server returns an error message.
+
+The browser receives the response message, interprets it and displays the contents of the message on the browser’s window according to the type of the response.
+
+I have attached the image below to illustrate how it works.
+
+The main resource used for this post is the English Wikipedia.
